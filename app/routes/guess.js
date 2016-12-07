@@ -26,7 +26,7 @@ router.route('/').post(function(req, res) {
 });
 
 router.route('/all').get(function(req, res) {
-        Guess.find(function(err, guesses) {
+        Guess.find({}).sort([['datePosted', -1]]).exec(function(err, guesses) {
             if (err)
                 res.send(err);
 
