@@ -9,6 +9,7 @@ router.use(function(req, res, next) {
 });
 
 router.use('/bear', require('./bear.js'));
+router.use('/guess', require('./guess.js'));
 
 
 module.exports = router;
