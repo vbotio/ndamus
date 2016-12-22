@@ -34,6 +34,34 @@ router.route('/all').get(function(req, res) {
         });
     });
 
+router.route('/:guess_id/thumbup').put(function(req, res){
+    Guess.findById(req.params.guess_id, function(err, guess){
+        if(err)
+            res.send(err);
+
+        guess.thumbsUp += 1;
+
+        guess.save(function(err){
+            if(err)
+                res.send(err);
+            res.json({ message: 'Successfully thumbed up!' });
+        });
+    });
+});
+router.route('/:guess_id/thumbdown').put(function(req, res){
+    Guess.findById(req.params.guess_id, function(err, guess){
+        if(err)
+            res.send(err);
+
+        guess.thumbsUp -= 1;
+
+        guess.save(function(err){
+            if(err)
+                res.send(err);
+            res.json({ message: 'Successfully thumbed down!' });
+        });
+    });
+});
 
 router.route('/:guess_id')
 
