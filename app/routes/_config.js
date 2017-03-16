@@ -11,13 +11,16 @@ router.use(function(req, res, next) {
 // middleware to allow cors
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
 
 
-router.use('/bear', require('./bear.js'));
+
+
+//router.use('/bear', require('./bear.js'));
 router.use('/guess', require('./guess.js'));
 
 

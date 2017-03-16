@@ -27,6 +27,9 @@ router.route('/').post(function(req, res) {
 
 router.route('/all').get(function(req, res) {
         Guess.find({}).sort([['datePosted', -1]]).exec(function(err, guesses) {
+
+            console.log(guesses);
+
             if (err)
                 res.send(err);
 
@@ -48,6 +51,7 @@ router.route('/:guess_id/thumbup').put(function(req, res){
         });
     });
 });
+
 router.route('/:guess_id/thumbdown').put(function(req, res){
     Guess.findById(req.params.guess_id, function(err, guess){
         if(err)
